@@ -6,7 +6,7 @@ function App() {
                  {key: 'W', val: -1}];
   const credit = [1, 2, 3];
   const [myCourses, setMyCourse] = useState([]);
-  const [inputData, setInputData] = useState({});
+  const [inputData, setInputData] = useState({});   
   const [GPA, setGPA] = useState(4.0);
 
   let name = ""
@@ -18,18 +18,20 @@ function App() {
    * Calculate the GPA of current courses
    * @returns the GPA of current courses
    */
-  function calculateGPA() {
+  function calculateGPA(course) {
     // TODO
     let grade = 0.00
     let credit = 0
-    myCourses.forEach(obj => {
+    course.forEach(obj => {
       if(Number(obj.grade) !== -1){
         grade += Number(obj.grade) * Number(obj.credit)
         credit += Number(obj.credit)
       }
     })
     grade  = Number(grade) / Number(credit)
-    setGPA(Number(grade.toPrecision(3)))
+    if(Number(grade) >= 0)
+      setGPA(Number(grade.toPrecision(3)))
+    else setGPA(4.00)
   }
 
   /**
@@ -40,25 +42,23 @@ function App() {
   function addCourse(event) {
     event.preventDefault();
     // TODO
-    setInputData({
+    /*setInputData({
       id: name,
       alphabet: a, 
       grade: g,
       credit: c
-    })
-
-    const course = [...myCourses]
-    course.push({
+    })*/
+    const course = {
       id: name,
       alphabet: a, 
       grade: g,
       credit: c
-    })
-    setMyCourse(course)
+    }
+    const newCourse = [...myCourses,course]
+      setMyCourse(newCourse)
     //console.log(String(inputData.id) + " " + String(inputData.alphabet) + " " +String(inputData.credit))
     // recalculate GPA
-    calculateGPA();
-    
+    calculateGPA(newCourse);
   }
 
   /**
@@ -72,8 +72,7 @@ function App() {
       return obj.id !== id
     })
     setMyCourse(retain)
-    calculateGPA();
-    calculateGPA();
+    calculateGPA(retain);
   }
 
   return (
@@ -133,7 +132,7 @@ function App() {
       </form>
       {/* TODO display calculated GPA */}
       {
-        <p>GPA :{GPA}</p>
+        <p>GPA :{GPA.toFixed(2)}</p>
       }
     </div>
   );
