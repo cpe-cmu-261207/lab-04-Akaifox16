@@ -7,7 +7,7 @@ function App() {
   const credit = [1, 2, 3];
   const [myCourses, setMyCourse] = useState([]);
   const [inputData, setInputData] = useState({});   
-  const [GPA, setGPA] = useState(4.0);
+  const [GPA, setGPA] = useState(0.00);
 
   let name = ""
   let a = ""
@@ -31,7 +31,7 @@ function App() {
     grade  = Number(grade) / Number(credit)
     if(Number(grade) >= 0)
       setGPA(Number(grade.toPrecision(3)))
-    else setGPA(4.00)
+    else setGPA(0.00)
   }
 
   /**
@@ -42,12 +42,6 @@ function App() {
   function addCourse(event) {
     event.preventDefault();
     // TODO
-    /*setInputData({
-      id: name,
-      alphabet: a, 
-      grade: g,
-      credit: c
-    })*/
     const course = {
       id: name,
       alphabet: a, 
@@ -56,7 +50,6 @@ function App() {
     }
     const newCourse = [...myCourses,course]
       setMyCourse(newCourse)
-    //console.log(String(inputData.id) + " " + String(inputData.alphabet) + " " +String(inputData.credit))
     // recalculate GPA
     calculateGPA(newCourse);
   }
@@ -99,11 +92,11 @@ function App() {
         document.getElementById("grade").selectedIndex = 0
         document.getElementById("w").selectedIndex = 0
         }}>
-          <table>
+          <table id="form">
             <tr>
-              <td><p> ชื่อวิชา </p></td>
-              <td><p> เกรดที่ได้รับ </p></td>
-              <td><p> หน่วยกิต </p></td>
+              <th>ชื่อวิชา</th>
+              <th>เกรดที่ได้รับ</th>
+              <th>หน่วยกิต</th>
             </tr>
             <tr>
               <td>
@@ -131,9 +124,7 @@ function App() {
           </table>
       </form>
       {/* TODO display calculated GPA */}
-      {
-        <p>GPA :{GPA.toFixed(2)}</p>
-      }
+        <h1 className="text-2xl my-3">GPA :{GPA.toFixed(2)}</h1>
     </div>
   );
 }

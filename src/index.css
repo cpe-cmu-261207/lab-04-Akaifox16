@@ -1,38 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;300&display=swap');
 body {
-  background-color: rgb(190, 189, 245,0.96);
-  font-family: sans-serif;
+  font-family: 'Prompt', sans-serif;
   font-size: 20px;
+  background-color:azure;
 }
-
-select{
-  font-size: 20px;
-  padding: 7px;
-  margin: 10px;
-}
-
 button{
-  background-color:rgba(75, 250, 206, 0.98);
-  padding: 7px;
+  background-color:#D9F6AA;
+  padding: 8px;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 30px;
 }
 button:hover{
-  background-color:rgb(240,72,122,0.94);
-  padding: 7px;
-  margin: 10px;
+  background-color:#A5A3F4;
+}
+.btn{
+  border-radius: 20px;
+  padding-left: 13px;
+  padding-right: 13px;
 }
 
-.btn{
-  margin-left: 480px;
+
+#name ,#grade,#w{
+  width: 200px;
+  font-size: 20px;
+  border-radius: 8px;
+  padding: 5px;
 }
-.btn:hover{
-  margin-left: 480px;
+#form {
+  border-collapse:separate;
 }
-.tag{
-  padding-left: 10px;
+
+#form td, th {
+  width: 1%;
+  padding: 7px;
+}
+
+#form td {
+  background-color: #A7E8DB;
+}
+
+#form th {
+  background-color:#90D19A;
+  border-top: none;
+}
+#form th:first-child , td:first-child{
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+#form th:last-child , td:nth-child(3){
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#form td:last-child {
+   border-left: none;
+   background-color:azure;
 }
 .CourseCard{
-  margin: 20px;
-  background-color: rgb(188,227,79,0.89);
+  margin: 13px;
+  background-color:#ABDCFF;
   border-radius: 8px;
+  font-family: 'Prompt', sans-serif;
+}
+#CC td{
+  width: 100%;
+  padding-left: 10px;
 }
